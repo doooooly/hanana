@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신용UP - 당신의 신용, AI가 대신 진단해드립니다</title>
+    <meta name="description" content="신용점수 AI 진단으로 점수 하락 원인을 파악하고 개선 전략을 받아보세요. 간단한 설문으로 시작하세요.">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-33TBWF4QWY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-33TBWF4QWY');
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #1e3a8a;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1e3a8a;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+                 .hero-quote {
+             background: rgba(255, 255, 255, 0.1);
+             backdrop-filter: blur(10px);
+             border-radius: 15px;
+             padding: 2rem;
+             margin: 2rem 0 1rem 0;
+             border-left: 4px solid #ffd700;
+         }
+
+        .hero-quote p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        /* Section Styles */
+                 .section {
+             padding: 60px 0;
+             background: white;
+         }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1e3a8a;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: white !important;
+            padding: 2rem !important;
+            border-radius: 15px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+            border-left: 4px solid #dc2626 !important;
+            transition: transform 0.3s ease !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+        }
+
+                 .problem-card h4 {
+             color: #1e3a8a;
+             margin-bottom: 1rem;
+             font-size: 1.2rem;
+         }
+
+         .problem-icon {
+             font-size: 2.5rem;
+             margin-bottom: 1rem;
+             text-align: center;
+         }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h4 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: #1e3a8a;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+                 /* CTA Section */
+         .cta {
+             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+             color: white;
+             text-align: center;
+             padding: 80px 0;
+         }
+
+        .cta h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta h3 {
+            color: #ffd700;
+            margin-bottom: 2rem;
+        }
+
+        /* Form Styles */
+        .email-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                line-height: 1.3;
+                word-break: keep-all;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+                line-height: 1.4;
+                word-break: keep-all;
+            }
+
+            .section h2 {
+                font-size: 1.6rem;
+                line-height: 1.3;
+                word-break: keep-all;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+                         .email-form {
+                 padding: 2rem;
+                 margin: 0 15px;
+             }
+
+             .visual-row {
+                 gap: 0.5rem;
+             }
+
+             .visual-item {
+                 padding: 1rem;
+                 min-width: 100px;
+             }
+
+             .visual-icon {
+                 font-size: 2rem;
+             }
+
+             .visual-item p {
+                 font-size: 0.8rem;
+             }
+
+             .solution-preview {
+                 gap: 1rem;
+             }
+
+             .solution-card {
+                 padding: 1.5rem;
+                 min-width: 120px;
+             }
+
+             .solution-icon {
+                 font-size: 2.5rem;
+             }
+
+             .solution-card h4 {
+                 font-size: 1rem;
+             }
+
+             .stats-grid {
+                 grid-template-columns: 1fr;
+                 gap: 1rem;
+             }
+
+             .stat-card {
+                 padding: 1.5rem !important;
+                 background: white !important;
+                 border-radius: 15px !important;
+                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+                 border: 1px solid #e5e7eb !important;
+                 transition: transform 0.3s ease !important;
+                 margin-bottom: 1rem !important;
+             }
+
+             .stat-card:hover {
+                 transform: translateY(-5px) !important;
+                 box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+             }
+
+             .stat-number {
+                 font-size: 2.5rem;
+                 font-weight: 700;
+                 color: #dc2626;
+                 margin-bottom: 0.5rem;
+             }
+
+             .stat-label {
+                 font-size: 1rem;
+                 color: #374151;
+                 margin-bottom: 0.5rem;
+                 line-height: 1.4;
+             }
+
+             .stat-source {
+                 font-size: 0.8rem;
+                 color: #6b7280;
+                 font-style: italic;
+             }
+
+             .complaints-grid {
+                 grid-template-columns: 1fr;
+                 gap: 1rem;
+             }
+
+             .complaints-number {
+                 font-size: 2.5rem;
+             }
+         }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+                line-height: 1.4;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+                line-height: 1.4;
+            }
+
+            .section h2 {
+                font-size: 1.4rem;
+                line-height: 1.3;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+                 /* Visual Elements */
+         .visual-demo {
+             background: #3b82f6;
+             border-radius: 15px;
+             padding: 2rem;
+             margin: 2rem 0;
+             color: white;
+             text-align: center;
+         }
+
+         .visual-demo h3 {
+             color: white;
+         }
+
+         .visual-demo p {
+             color: white;
+         }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .demo-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+                 .demo-item h5 {
+             margin-bottom: 0.5rem;
+             color: #ffd700;
+         }
+
+         /* Hero Visual Elements */
+         .hero-visuals {
+             margin-top: 3rem;
+         }
+
+         .visual-row {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             gap: 1rem;
+             margin-bottom: 2rem;
+             flex-wrap: wrap;
+         }
+
+         .visual-item {
+             text-align: center;
+             background: rgba(255, 255, 255, 0.1);
+             backdrop-filter: blur(10px);
+             padding: 1.5rem;
+             border-radius: 15px;
+             border: 1px solid rgba(255, 255, 255, 0.2);
+             min-width: 120px;
+         }
+
+         .visual-icon {
+             font-size: 2.5rem;
+             margin-bottom: 0.5rem;
+         }
+
+         .visual-item p {
+             font-size: 0.9rem;
+             font-weight: 600;
+             margin: 0;
+         }
+
+         .visual-arrow {
+             font-size: 1.5rem;
+             opacity: 0.7;
+         }
+
+         .solution-preview {
+             display: flex;
+             justify-content: center;
+             gap: 2rem;
+             flex-wrap: wrap;
+         }
+
+         .solution-card {
+             background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 237, 78, 0.2));
+             backdrop-filter: blur(10px);
+             padding: 2rem;
+             border-radius: 20px;
+             border: 2px solid rgba(255, 215, 0, 0.3);
+             text-align: center;
+             min-width: 150px;
+             transition: transform 0.3s;
+         }
+
+         .solution-card:hover {
+             transform: translateY(-5px);
+         }
+
+         .solution-icon {
+             font-size: 3rem;
+             margin-bottom: 1rem;
+         }
+
+         .solution-card h4 {
+             color: #ffd700;
+             font-size: 1.2rem;
+             font-weight: 700;
+             margin-bottom: 0.5rem;
+         }
+
+         .solution-card p {
+             font-size: 0.9rem;
+             opacity: 0.9;
+             margin: 0;
+         }
+
+         /* 통계 데이터 섹션 */
+         .stats-section {
+             margin: 3rem 0;
+             text-align: center;
+         }
+
+         .stats-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             gap: 2rem;
+             margin-top: 2rem;
+         }
+
+         .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+         .stat-number {
+             font-size: 3rem;
+             font-weight: 700;
+             margin-bottom: 1rem;
+             color: #dc2626;
+         }
+
+         .stat-label {
+             font-size: 1.1rem;
+             font-weight: 600;
+             margin-bottom: 1rem;
+             line-height: 1.4;
+         }
+
+         .stat-source {
+             font-size: 0.9rem;
+             opacity: 0.8;
+         }
+
+         /* 신용평가 불만 섹션 */
+         .complaints-section {
+             margin: 3rem 0;
+             text-align: center;
+         }
+
+                   .complaints-header {
+              margin-bottom: 1rem;
+          }
+
+         .complaints-number {
+             font-size: 3rem;
+             font-weight: 700;
+             color: #dc2626;
+             margin-bottom: 0.5rem;
+         }
+
+         .complaints-subtitle {
+             font-size: 1rem;
+             color: #666;
+         }
+
+         .complaints-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             gap: 2rem;
+             margin-top: 2rem;
+         }
+
+         .complaint-card {
+             background: white !important;
+             padding: 2rem !important;
+             border-radius: 15px !important;
+             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+             border-left: 4px solid #dc2626 !important;
+             text-align: left !important;
+             transition: transform 0.3s ease !important;
+             margin-bottom: 1rem !important;
+         }
+
+         .complaint-card:hover {
+             transform: translateY(-5px) !important;
+             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+         }
+
+         .complaint-icon {
+             font-size: 2rem;
+             margin-bottom: 1rem;
+         }
+
+         .complaint-card h4 {
+             color: #1e3a8a;
+             margin-bottom: 1rem;
+             font-size: 1.2rem;
+         }
+
+                   .complaint-card p {
+              color: #666;
+              line-height: 1.6;
+          }
+
+          /* 신용점수가 미치는 영향 섹션 */
+          .impact-section {
+              margin: 3rem 0;
+              text-align: center;
+          }
+
+          .impact-section h3 {
+              margin-bottom: 2rem;
+          }
+        .stats-section h3,
+        .complaints-section h3,
+        .impact-section h3 {
+            position: relative;
+            padding-bottom: 0.7rem;
+            margin-bottom: 2rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+                         <div class="logo">신용UP</div>
+            <ul class="nav-links">
+                <li><a href="#hero">홈</a></li>
+                <li><a href="#problem">문제점</a></li>
+                <li><a href="#features">기능</a></li>
+                <li><a href="#cta">시작하기</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section (Attention) -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1 class="fade-in">신용점수, 지금은 몰라도 언젠간 발목 잡힐 수 있습니다.</h1>
+            <h2 class="fade-in">당신의 신용, 지금부터 AI가 대신 진단해드립니다.</h2>
+            
+                         <div class="hero-quote fade-in">
+                 <p>📌 "그냥 신용점수는 높은 게 좋다던데… 나중에 필요할 때 알아보지 뭐."</p>
+                 <p>그렇게 넘겼던 신용점수가, <span class="highlight">단 2점 차이로 대출이 거절되고</span>,</p>
+                 <p><span class="highlight">같은 조건인데도 연 1% 더 높은 금리</span>를 받는 이유가 됩니다.</p>
+                 <p>대부분의 사람은 신용점수를 조회만 하고 끝냅니다.</p>
+                 <p>점수가 왜 떨어졌는지, 어떻게 올려야 할지 <span class="highlight">누구도 제대로 알려주지 않기 때문입니다.</span></p>
+             </div>
+
+             <!-- Visual Elements -->
+             <div class="hero-visuals fade-in">
+                 <div class="visual-row">
+                     <div class="visual-item">
+                         <div class="visual-icon">📊</div>
+                         <p>신용점수 조회만</p>
+                     </div>
+                     <div class="visual-arrow">➡️</div>
+                     <div class="visual-item">
+                         <div class="visual-icon">❓</div>
+                         <p>왜 떨어졌는지 모름</p>
+                     </div>
+                     <div class="visual-arrow">➡️</div>
+                     <div class="visual-item">
+                         <div class="visual-icon">💸</div>
+                         <p>높은 금리 부담</p>
+                     </div>
+                 </div>
+                 
+                 <div class="solution-preview">
+                     <div class="solution-card">
+                         <div class="solution-icon">🤖</div>
+                         <h4>AI 진단</h4>
+                         <p>원인 분석</p>
+                     </div>
+                     <div class="solution-card">
+                         <div class="solution-icon">📈</div>
+                         <h4>점수 상승</h4>
+                         <p>전략 실행</p>
+                     </div>
+                     <div class="solution-card">
+                         <div class="solution-icon">💰</div>
+                         <h4>금리 절약</h4>
+                         <p>실질 혜택</p>
+                     </div>
+                 </div>
+             </div>
+        </div>
+    </section>
+
+    <!-- Problem Section (Interest) -->
+    <section id="problem" class="section">
+        <div class="container">
+            <h2>"점수가 왜 떨어졌는지도 모르겠고, 어디서부터 시작해야 할지 막막했어요."</h2>
+            
+                         <!-- 통계 데이터 섹션 -->
+             <div class="stats-section fade-in">
+                 <h3>📊 소비자 신용점수 이해도 현황</h3>
+                 <div class="stats-grid">
+                     <div class="stat-card">
+                         <div class="stat-number">8.3%</div>
+                         <div class="stat-label">본인의 신용점수 산정 기준을 정확히 안다</div>
+                         <div class="stat-source">2021년 한국금융소비자연맹 조사</div>
+                     </div>
+                     <div class="stat-card">
+                         <div class="stat-number">13.6%</div>
+                         <div class="stat-label">점수 하락 원인을 명확히 알 수 있다</div>
+                         <div class="stat-source">소비자 자기인지율</div>
+                     </div>
+                 </div>
+             </div>
+
+                           <!-- 신용평가 불만 섹션 -->
+              <div class="complaints-section fade-in">
+                  <h3>🚨 신용평가 불만 급증</h3>
+                  <div class="complaints-header">
+                      <div class="complaints-number">784건</div>
+                      <div class="complaints-subtitle">"신용평가 관련 민원 추이" - 2022년 기준 전년 대비 27% 증가</div>
+                  </div>
+                  <div class="complaints-grid">
+                      <div class="complaint-card">
+                          <div class="complaint-icon">⚠️</div>
+                          <h4>신용점수 산정 정확성 불신</h4>
+                          <p>"내 점수가 정말 정확한 건지, 왜 이렇게 산정되었는지에 대한 의문과 불신이 가장 큰 불만 요인입니다."</p>
+                      </div>
+                      <div class="complaint-card">
+                          <div class="complaint-icon">❓</div>
+                          <h4>평가 차이에 대한 안내 부족</h4>
+                          <p>"신용평가기관마다 다른 점수가 나오는데, 왜 차이가 발생하는지 명확한 설명을 받을 수 없어 답답합니다."</p>
+                      </div>
+                      <div class="complaint-card">
+                          <div class="complaint-icon">🚨</div>
+                          <h4>대출 전후 점수 하락 미안내</h4>
+                          <p>"대출을 받은 후 갑자기 점수가 떨어져도 사전에 알려주지 않아서, 다음 대출 계획에 차질이 생깁니다."</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- 신용점수가 미치는 영향 섹션 -->
+              <div class="impact-section fade-in">
+                  <h3>💔 신용점수가 미치는 영향</h3>
+                  <div class="problem-grid">
+                                     <div class="problem-card fade-in">
+                        <div class="problem-icon">🏠</div>
+                        <h4>전세자금 대출 거절</h4>
+                        <p>"점수 698점이라는 이유로 전세자금 대출이 거절되었습니다. 단 2점 차이가 이렇게 중요한 줄 몰랐어요."</p>
+                    </div>
+                                       <div class="problem-card fade-in">
+                        <div class="problem-icon">💰</div>
+                        <h4>같은 조건, 다른 금리</h4>
+                        <p>"같은 조건인데 친구는 연 3.2%, 나는 연 4.3%? 왜 나만 금리가 높을까요?"</p>
+                    </div>
+                   <div class="problem-card fade-in">
+                       <div class="problem-icon">📊</div>
+                       <h4>정책금융 대상 제외</h4>
+                       <p>"660점 미만이면 정책금융 대상조차 안 되는 경우도 많습니다. 내 점수가 이렇게 중요한 기준이 될 줄 몰랐어요."</p>
+                   </div>
+              </div>
+
+            <div class="visual-demo fade-in">
+                <h3>💬 그런데… 내 점수는 왜 이렇게 된 걸까?</h3>
+                <p><strong>신용점수는 단순 숫자가 아닙니다.</strong></p>
+                <p>소비 습관, 대출 상태, 자동이체 여부, 카드 사용률 등</p>
+                <p><strong>복합적인 요인이 결합된 결과</strong>입니다.</p>
+                
+                <div class="demo-grid">
+                    <div class="demo-item">
+                        <h5>소비 습관</h5>
+                        <p>카드 사용률, 결제 패턴</p>
+                    </div>
+                    <div class="demo-item">
+                        <h5>대출 상태</h5>
+                        <p>연체 이력, 상환 능력</p>
+                    </div>
+                    <div class="demo-item">
+                        <h5>자동이체</h5>
+                        <p>정기 결제 등록 여부</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-quote fade-in" style="background: rgba(102, 126, 234, 0.1); border-left-color: #667eea;">
+                <p>우리는 신용점수 숫자 외엔 아무것도 알 수 없습니다.</p>
+                <p><strong>전문가가 아니면 구조를 파악하기도, 개선하기도 어렵습니다.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (Desire) -->
+    <section id="features" class="section">
+        <div class="container">
+            <h2>신용UP이 당신의 신용점수를 해석하고, 다음 행동 전략까지 설계합니다.</h2>
+            <h3>🧪 핵심 기능 요약</h3>
+            
+                         <div class="features-grid">
+                 <div class="feature-card fade-in">
+                     <div class="feature-icon">🔍</div>
+                     <h4>신용유형 진단 설문</h4>
+                     <p>- 간단한 카드형 설문으로 내 신용구조 정확 진단</p>
+                     <p>- '내 소비 습관은 몇 등급일까?' 궁금증 해소</p>
+                 </div>
+                 <div class="feature-card fade-in">
+                     <div class="feature-icon">📄</div>
+                     <h4>생성형 AI 요약 리포트</h4>
+                     <p>- 점수 하락 원인과 우선순위 간단 정리</p>
+                     <p>- '최근 연체 2회, 사용률 87%' 핵심 포인트 콕 짚기</p>
+                 </div>
+                 <div class="feature-card fade-in">
+                     <div class="feature-icon">🏁</div>
+                     <h4>행동 추천 챌린지</h4>
+                     <p>- '자동이체 등록', '카드 사용률 10% 줄이기' 실행 가이드</p>
+                     <p>- 이번 달 미션 완료로 점수 상승 경험</p>
+                 </div>
+                 <div class="feature-card fade-in">
+                     <div class="feature-icon">💸</div>
+                     <h4>금리 절감 시뮬레이터 (프리미엄)</h4>
+                     <p>- 점수 상승 시 절약 가능한 금액 실시간 계산</p>
+                     <p>- 점수 10점 상승으로 연간 20만 원 이상 절약 확인</p>
+                 </div>
+             </div>
+
+            
+        </div>
+    </section>
+
+
+
+    <!-- CTA Section (Action) -->
+    <section id="cta" class="cta">
+        <div class="container">
+            <h2>신용점수, 아무도 설명해주지 않던 숫자</h2>
+            <h3>지금은 신용UP이 설명해드립니다.</h3>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">🔔 지금 바로 사전 신청하고, 가장 먼저 미션을 시작해보세요</p>
+            
+            <div class="email-form fade-in">
+                                 <form action="https://formspree.io/f/xyzppajb" method="POST">
+                    <div class="form-group">
+                        <label for="email">이메일 주소</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        📩 AI 리포트 받고 시작하기
+                    </button>
+                </form>
+            </div>
+            
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+                         <p>&copy; 2024 신용UP. 모든 권리 보유.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements that should fade in
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> 
